@@ -23,6 +23,9 @@ app.get('/ping', (req, res) => {
 
 app.ws('/game', (ws, req) => {
     log.debug(`[WS] Connect`);
+
+    ws.send(JSON.stringify(['HELLO', '1.0.0']));
+
     ws.on('message', (data) => {
         ws.send("hello "+String(data)+"!");
     });
